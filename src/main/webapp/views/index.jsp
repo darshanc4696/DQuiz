@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "navbar.jsp" %>
+<%@ page import="com.dquiz.quizservices.QuizAttemptService,com.dquiz.quizservices.UserService, com.dquiz.quizservices.QuizService, com.dquiz.models.QuizAttempt, java.util.List" %>
+
+              
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,62 +60,24 @@
                         <th>Category</th>
                         <th>Score</th>
                     </tr>
-                    <!-- Example entries -->
-                    <tr>
-                        <td>1</td>
-                        <td>PlayerOne</td>
-                        <td>Science</td>
-                        <td>95</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>PlayerTwo</td>
-                        <td>Science</td>
-                        <td>90</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>PlayerThree</td>
-                        <td>Science</td>
-                        <td>85</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>PlayerThree</td>
-                        <td>Science</td>
-                        <td>85</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>PlayerThree</td>
-                        <td>Science</td>
-                        <td>85</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>PlayerThree</td>
-                        <td>Science</td>
-                        <td>85</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>PlayerThree</td>
-                        <td>Science</td>
-                        <td>85</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>PlayerThree</td>
-                        <td>Science</td>
-                        <td>85</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>PlayerThree</td>
-                        <td>Science</td>
-                        <td>85</td>
-                    </tr>
-                </table>
+
+				 <%! int rank = 1; %> 
+				 <% QuizAttemptService qas = new QuizAttemptService(); 
+				 UserService us = new UserService();
+				 QuizService qs = new QuizService();
+				 List<QuizAttempt> qal = qas.getAllAttempt();
+				 
+				 for(QuizAttempt qa : qal)
+				 {%>
+					 <tr>
+					     <td><%= rank++ %></td>
+					     <td><%= us.getUsernameById(qa.getUserid()) %></td>
+					     <td><%= qs.getQuiztitleById(qa.getQuizid()) %></td>
+					     <td><%= qa.getScore() %></td>
+				 	</tr>
+				 <%}%>
+
+			 </table>
             </div>
         </div>
     </section>

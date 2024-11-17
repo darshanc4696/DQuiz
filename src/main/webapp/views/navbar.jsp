@@ -25,7 +25,7 @@
                             <option value="tech">Tech</option>
                         </select>
                     </li> -->
-                    <li><a href="#">Leaderboard</a></li>
+                    <li><a href="/quizess/leaderboard">Leaderboard</a></li>
                     <li><a href="/quizess/login" class="signin">Sign In/ Sign Up</a></li>
  
                 </ul>

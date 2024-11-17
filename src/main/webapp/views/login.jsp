@@ -13,21 +13,21 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form>
+				<form action="/auth/register" method="post">
 					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="txt" placeholder="User name" required="">
+					<input type="text" name="username" placeholder="User name" required="">
 					<input type="email" name="email" placeholder="Email" required="">
           <input type="number" name="phoneNumber" placeholder="Phone" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
+					<input type="password" name="password" placeholder="Password" required="">
 					<button>Sign up</button>
 				</form>
 			</div>
 
 			<div class="login">
-				<form>
+				<form action="/auth/login" method="get">
 					<label for="chk" aria-hidden="true">Login</label>
 					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
+					<input type="password" name="password" placeholder="Password" required="">
 					<button>Login</button>
 				</form>
 			</div>

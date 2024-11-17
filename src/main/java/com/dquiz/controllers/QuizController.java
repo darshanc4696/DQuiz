@@ -1,14 +1,27 @@
 package com.dquiz.controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import com.dquiz.models.QuizAttempt;
+import com.dquiz.quizservices.QuizAttemptService;
+import com.dquiz.quizservices.QuizService;
+import com.dquiz.quizservices.UserService;
 
 
 @Controller
 @RequestMapping("/quizess")
 public class QuizController {
+	
+	@Autowired
+	private QuizAttemptService qas;
+	private UserService us;
+	private QuizService qs;
     
     @GetMapping({"/", "/home"})
     public String homePage() {
@@ -20,11 +33,13 @@ public class QuizController {
         return "login";
     }
     
-    @GetMapping("/givequiz")
-    public void give()
+    @GetMapping("/leaderboard")
+    public String leaderboard(Model model)
     {
-    	System.out.println("inside give");
-    }
+    	List<QuizAttempt> quizAttempt = qas.getAllAttempt();
+    	
+    	return "leaderboard";
+     }
     
 }
 

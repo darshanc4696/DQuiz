@@ -13,7 +13,11 @@ public class UserService {
 	private UserRepo userRepo;
 	
 	public void saveUser(User user) {
-		userRepo.save(user) ;
+		User u = userRepo.save(user);
+		if(u.getEmail().equals(user.getEmail()))
+			System.out.println("registered successfully");
+		else
+			System.out.println("registration unsuccessfull");
 		
 	}
 
@@ -30,6 +34,11 @@ public class UserService {
 	    } else {
 	        return "user not exist";
 	    }
+	}
+	
+	public String getUsernameById(int id)
+	{
+		return userRepo.findById(id).orElse(new User()).getUsername();
 	}
 
 

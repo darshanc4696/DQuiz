@@ -24,28 +24,28 @@ public class User {
 	private int userid;
 	private String username;
 	private String email;
+	private String phoneNumber;
 	private String password;
-	private String role;
 	
 	public User() {
 		super();
 	}
 
-	public User(String username, String email, String password, String role) {
-		super();
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.role = role;
-	}
-
-	public User(int userid, String username, String email, String password, String role) {
+	public User(int userid, String username, String email, String phoneNumber, String password) {
 		super();
 		this.userid = userid;
 		this.username = username;
 		this.email = email;
+		this.phoneNumber = phoneNumber;
 		this.password = password;
-		this.role = role;
+	}
+
+	public User(String username, String email, String phoneNumber, String password) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
 	}
 
 	public int getUserid() {
@@ -72,19 +72,19 @@ public class User {
 		this.email = email;
 	}
 
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
 	}
 }
