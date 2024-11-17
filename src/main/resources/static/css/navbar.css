@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+:root {
+    --primary-color: #408080;
+    --secondary-color: #ff006e;
+    --text-color: #ffffff;
+    --bg-color: #f8f9fa;
+    --accent-color: #ff006e;	
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 1em 0;
+    position: fixed; /* Fixed position at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure the navbar is above other content */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar nav ul li {
+    margin-left: 20px;
+    position: relative;
+}
+
+.navbar nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar nav ul li a.signin,
+.navbar nav ul li a.signup {
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    color: var(--text-color);
+}
+
+.signup {
+    background-color: var(--accent-color);
+}
+
+.signin {
+    background-color: var(--secondary-color);
+}
+
+/* Add padding to the top of the body to prevent the navbar from overlapping content */
+body {
+    padding-top: 80px; /* Adjust based on your navbar height */
+}

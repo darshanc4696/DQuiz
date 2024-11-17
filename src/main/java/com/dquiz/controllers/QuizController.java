@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class QuizController {
     
     @GetMapping({"/", "/home"})
-    public String home() {
-        return "home";  // This should look for home.jsp in the /views/ folder
+    public String homePage() {
+        return "index";  // This should look for home.jsp in the /views/ folder
     }
     
     @GetMapping("/login")
