@@ -3,7 +3,6 @@ package com.dquiz.quizservices;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.dquiz.models.QuizAttempt;
@@ -17,7 +16,7 @@ public class QuizAttemptService {
 	
 	public List<QuizAttempt> getAllAttempt()
 	{
-		return (List<QuizAttempt>)quizAttRepo.findAll();
+		return quizAttRepo.findAll();
 	}
 
 }

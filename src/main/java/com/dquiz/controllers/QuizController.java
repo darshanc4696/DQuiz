@@ -24,8 +24,16 @@ public class QuizController {
 	private QuizService qs;
     
     @GetMapping({"/", "/home"})
-    public String homePage() {
-        return "index";  // This should look for home.jsp in the /views/ folder
+    public String homePage(Model model) {
+    	List<QuizAttempt> leaderboard = qas.getAllAttempt();
+    	for(QuizAttempt qa : leaderboard)
+    	{
+    		System.out.println(qa);
+    	}
+    	
+    	System.err.println(leaderboard);
+        model.addAttribute("leaderboard", leaderboard);
+        return "index"; 
     }
     
     @GetMapping("/login")
@@ -36,9 +44,15 @@ public class QuizController {
     @GetMapping("/leaderboard")
     public String leaderboard(Model model)
     {
-    	List<QuizAttempt> quizAttempt = qas.getAllAttempt();
+    	List<QuizAttempt> leaderboard = qas.getAllAttempt();
+    	for(QuizAttempt qa : leaderboard)
+    	{
+    		System.out.println(qa);
+    	}
     	
-    	return "leaderboard";
+    	System.err.println(leaderboard);
+        model.addAttribute("leaderboard", leaderboard);
+        return "leaderboard";
      }
     
 }

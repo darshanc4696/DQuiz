@@ -53,31 +53,28 @@
             <p>Top scorers of the week:</p>
             <div class="leaderboard-table">
                 <!-- Leaderboard content fetched from database -->
-                <table>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Username</th>
-                        <th>Category</th>
-                        <th>Score</th>
-                    </tr>
+                <%! int rank = 1; %>
+                 <table>
+			        <thead>
+			            <tr>
+			                <th>Rank</th>
+			                <th>Username</th>
+			                <th>Category</th>
+			                <th>Score</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <c:forEach var="attempt" items="${leaderboard}" varStatus="status">
+			                <tr>
+			                    <td><%= rank++ %></td>
+			                    <td>${attempt.getUser().getUsername()}</td>
+			                    <td>${attempt.getQuiz().getTitle()}</td>
+			                    <td>${attempt.score}</td>
 
-				 <%! int rank = 1; %> 
-				 <% QuizAttemptService qas = new QuizAttemptService(); 
-				 UserService us = new UserService();
-				 QuizService qs = new QuizService();
-				 List<QuizAttempt> qal = qas.getAllAttempt();
-				 
-				 for(QuizAttempt qa : qal)
-				 {%>
-					 <tr>
-					     <td><%= rank++ %></td>
-					     <td><%= us.getUsernameById(qa.getUserid()) %></td>
-					     <td><%= qs.getQuiztitleById(qa.getQuizid()) %></td>
-					     <td><%= qa.getScore() %></td>
-				 	</tr>
-				 <%}%>
-
-			 </table>
+			                </tr>
+			            </c:forEach>
+			        </tbody>
+    			</table>
             </div>
         </div>
     </section>

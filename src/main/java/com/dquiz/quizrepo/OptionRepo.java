@@ -7,5 +7,7 @@ import com.dquiz.models.Options;
 
 @Repository
 public interface OptionRepo extends JpaRepository<Options, Integer> {
+	
+	
 
 }
