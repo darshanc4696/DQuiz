@@ -21,18 +21,18 @@ public class UserService {
 		
 	}
 
-	public String validateUser(String email, String password) {
+	public User validateUser(String email, String password) {
 	    
 	    User user = userRepo.findByEmail(email);
 	    
 	    if (user != null) {
 	        if (password.equals(user.getPassword())) {
-	            return "loggedin";
+	            return user;
 	        } else {
-	            return "password wrong";
+	            return new User();
 	        }
 	    } else {
-	        return "user not exist";
+	        return new User();
 	    }
 	}
 	

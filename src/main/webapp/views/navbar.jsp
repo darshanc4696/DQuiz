@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,17 +18,15 @@
                 <ul>
                     <li><a href="/quizess/home">Home</a></li>
                     <li><a href="#">About</a></li>
-<!--                <li><a href="#">Categories</a> 
-                        <select>
-                            <option value="science">Science</option>
-                            <option value="math">Math</option>
-                            <option value="history">History</option>
-                            <option value="tech">Tech</option>
-                        </select>
-                    </li> -->
                     <li><a href="/quizess/leaderboard">Leaderboard</a></li>
-                    <li><a href="/quizess/login" class="signin">Sign In/ Sign Up</a></li>
- 
+					<c:choose>
+					    <c:when test="${user != null}">
+					        <li><a href="/quizess/login" class="signin">Logout</a></li>
+					    </c:when>
+					    <c:otherwise>
+					        <li><a href="/quizess/login" class="signin">Sign In/ Sign Up</a></li>
+					    </c:otherwise>
+					</c:choose>
                 </ul>
             </nav>
         </div>

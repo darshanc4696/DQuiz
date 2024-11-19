@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file = "navbar.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,29 +17,33 @@
             <h2>Leaderboard</h2>
             <p>Top scorers of the week:</p>
             <div class="leaderboard-table">
+            
+            
                 <!-- Leaderboard content fetched from database -->
                 <%! int rank = 1; %>
-                 <table>
-			        <thead>
-			            <tr>
-			                <th>Rank</th>
-			                <th>Username</th>
-			                <th>Category</th>
-			                <th>Score</th>
-			            </tr>
-			        </thead>
-			        <tbody>
-			            <c:forEach var="attempt" items="${leaderboard}" varStatus="status">
-			                <tr>
-			                    <td><%= rank++ %></td>
-			                    <td>${attempt.user.username}</td>
-			                    <td>${attempt.quiz.title}</td>
-			                    <td>${attempt.score}</td>
+                 <table border="1">
+				    <thead>
+				        <tr>
+				            <th>Username</th>
+				            <th>Quiz Title</th>
+				            <th>Score</th>
+				            <th>Attempt Date</th>
+				        </tr>
+				    </thead>
+				    <tbody>
+                        <c:set var="rank" value="1" />
+                        <c:forEach var="attempt" items="${leaderboard}">
+                            <tr>
+                                <td>${rank}</td> <!-- Display rank -->
+                                <td>${attempt.user.username}</td>  <!-- Access username from User object -->
+                                <td>${attempt.quiz.title}</td>     <!-- Access quiz title from Quiz object -->
+                                <td>${attempt.score}</td>          <!-- Direct field of QuizAttempt -->
+                            </tr>
+                            <c:set var="rank" value="${rank + 1}" /> <!-- Increment rank for each row -->
+                        </c:forEach>
+                    </tbody>
+				</table>
 
-			                </tr>
-			            </c:forEach>
-			        </tbody>
-    			</table>
             </div>
         </div>
     </section>

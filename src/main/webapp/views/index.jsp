@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file = "navbar.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="com.dquiz.quizservices.QuizAttemptService,com.dquiz.quizservices.UserService, com.dquiz.quizservices.QuizService, com.dquiz.models.QuizAttempt, java.util.List" %>
 
               
@@ -43,6 +43,14 @@
         <div class="container">
             <h1>Challenge Your Knowledge!</h1>
             <p class="quote">"Learning is a treasure that will follow its owner everywhere."</p>
+           <!--  <button class="startbutton">
+    			<a href="/quizess/login">Start Quiz</a>
+			</button> -->
+			<c:if test="${user != null}">
+   				 <button class="startbutton">
+        			<a href="/quizess/login">Start Quiz</a>
+    			</button>
+			</c:if>
         </div>
     </section>
 
@@ -52,29 +60,31 @@
             <h2>Leaderboard</h2>
             <p>Top scorers of the week:</p>
             <div class="leaderboard-table">
+            <p>leaderbooard: ${leaderboard}</p>
                 <!-- Leaderboard content fetched from database -->
                 <%! int rank = 1; %>
-                 <table>
-			        <thead>
-			            <tr>
-			                <th>Rank</th>
-			                <th>Username</th>
-			                <th>Category</th>
-			                <th>Score</th>
-			            </tr>
-			        </thead>
-			        <tbody>
-			            <c:forEach var="attempt" items="${leaderboard}" varStatus="status">
-			                <tr>
-			                    <td><%= rank++ %></td>
-			                    <td>${attempt.getUser().getUsername()}</td>
-			                    <td>${attempt.getQuiz().getTitle()}</td>
-			                    <td>${attempt.score}</td>
-
-			                </tr>
-			            </c:forEach>
-			        </tbody>
-    			</table>
+                 <table border="1">
+				    <thead>
+				        <tr>
+				        	<th>Rank</th>
+				            <th>Username</th>
+				            <th>Quiz Title</th>
+				            <th>Score</th>
+				        </tr>
+				    </thead>
+				    <tbody>
+                        <c:set var="rank" value="1" />
+                        <c:forEach var="attempt" items="${leaderboard}">
+                            <tr>
+                                <td>${rank}</td> <!-- Display rank -->
+                                <td>${attempt.user.username}</td>  <!-- Access username from User object -->
+                                <td>${attempt.quiz.title}</td>     <!-- Access quiz title from Quiz object -->
+                                <td>${attempt.score}</td>          <!-- Direct field of QuizAttempt -->
+                            </tr>
+                            <c:set var="rank" value="${rank + 1}" /> <!-- Increment rank for each row -->
+                        </c:forEach>
+                    </tbody>
+				</table>
             </div>
         </div>
     </section>
