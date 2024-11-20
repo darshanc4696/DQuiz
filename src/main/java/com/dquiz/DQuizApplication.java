@@ -10,5 +10,4 @@ public class DQuizApplication {
 		SpringApplication.run(DQuizApplication.class, args);
 		System.out.println("Application Started");
 	}
-
 }

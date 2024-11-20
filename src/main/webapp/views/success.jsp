@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1>registered successfully!</h1>
+<a href="/quizess/home"> Back to Home</a>
 </body>
 </html>

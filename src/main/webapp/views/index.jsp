@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file = "navbar.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="com.dquiz.quizservices.QuizAttemptService,com.dquiz.quizservices.UserService, com.dquiz.quizservices.QuizService, com.dquiz.models.QuizAttempt, java.util.List" %>
+<%@ page import="com.dquiz.quizservices.QuizAttemptService,com.dquiz.quizservices.UserService, com.dquiz.quizservices.QuizService, com.dquiz.models.QuizAttempt, com.dquiz.models.User, java.util.List" %>
 
               
 <!DOCTYPE html>
@@ -46,11 +46,15 @@
            <!--  <button class="startbutton">
     			<a href="/quizess/login">Start Quiz</a>
 			</button> -->
-			<c:if test="${user != null}">
+			<% User user = (User)session.getAttribute("user");
+				if(user != null)
+				{%>	
    				 <button class="startbutton">
         			<a href="/quizess/login">Start Quiz</a>
-    			</button>
-			</c:if>
+    			</button>				
+				<%}
+			%>
+
         </div>
     </section>
 
@@ -58,9 +62,8 @@
     <section class="leaderboard">
         <div class="container">
             <h2>Leaderboard</h2>
-            <p>Top scorers of the week:</p>
+            <p style="color: red;">Top five scorers of the quiz:</p>
             <div class="leaderboard-table">
-            <p>leaderbooard: ${leaderboard}</p>
                 <!-- Leaderboard content fetched from database -->
                 <%! int rank = 1; %>
                  <table border="1">

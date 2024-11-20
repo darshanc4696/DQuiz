@@ -20,9 +20,11 @@ import com.dquiz.models.User;
 import com.dquiz.quizservices.QuizAttemptService;
 import com.dquiz.quizservices.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/auth")
-@SessionAttributes("user")
+@SessionAttributes("leaderboard")
 public class AuthController {
     
     @Autowired
@@ -39,18 +41,30 @@ public class AuthController {
     @GetMapping("/login")
     public String login(@RequestParam("email") String email, 
                         @RequestParam("password") String password, 
-                        Model model, RedirectAttributes redirectAttributes) {
+                        Model model, RedirectAttributes redirectAttributes, HttpSession
+                        session) {
         
         User user = userService.validateUser(email, password);
         
         if (user.getUserid() != 0) {
-            redirectAttributes.addFlashAttribute("user", user);
-            List<QuizAttempt> leaderboard = qas.getAllAttempt();
-        	Collections.sort(leaderboard, Comparator.comparingInt(QuizAttempt::getScore).reversed());
-            redirectAttributes.addFlashAttribute("leaderboard", leaderboard);
+//            redirectAttributes.addFlashAttribute("user", user);
+//            List<QuizAttempt> leaderboard = qas.getAllAttempt();
+//        	Collections.sort(leaderboard, Comparator.comparingInt(QuizAttempt::getScore).reversed());
+//            redirectAttributes.addFlashAttribute("leaderboard", leaderboard);
+            session.setAttribute("user", user);
+//            session.setAttribute("leader", user);
         }
+
         
-        return "redirect:/quizess/index"; // Redirect to maintain data after login
+        
+        return "index"; // Redirect to maintain data after login
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session)
+    {
+    	session.invalidate();
+    	return "index";
     }
   
 }

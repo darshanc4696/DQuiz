@@ -21,7 +21,8 @@
                     <li><a href="/quizess/leaderboard">Leaderboard</a></li>
 					<c:choose>
 					    <c:when test="${user != null}">
-					        <li><a href="/quizess/login" class="signin">Logout</a></li>
+					    	<li><a href="/quizess/history">History</a></li>
+					        <li><a href="/auth/logout" class="signin">Logout</a></li>
 					    </c:when>
 					    <c:otherwise>
 					        <li><a href="/quizess/login" class="signin">Sign In/ Sign Up</a></li>

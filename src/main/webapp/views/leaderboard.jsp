@@ -15,7 +15,7 @@
     <section class="leaderboard">
         <div class="container">
             <h2>Leaderboard</h2>
-            <p>Top scorers of the week:</p>
+            <p style="color: red;">Top scorers of the week:</p>
             <div class="leaderboard-table">
             
             

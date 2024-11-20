@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f0ff; /* Light purple background */
+    margin: 0;
+    padding: 10;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #4b0082; /* Dark purple */
+    margin-top: 20px;
+    font-size: 2em;
+}
+
+/* Message for No Attempts */
+p {
+    text-align: center;
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Table Styling */
+table {
+    width: 80%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #4b0082; /* Dark purple */
+    color: white;
+}
+
+thead th {
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for alternating rows */
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+tbody td {
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 1em;
+    color: #333;
+}
+
+tbody tr:hover {
+    background-color: #e8d8ff; /* Soft purple on hover */
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px 0;
+    background-color: #4b0082;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table {
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+}
