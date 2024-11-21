@@ -62,7 +62,7 @@
     <section class="leaderboard">
         <div class="container">
             <h2>Leaderboard</h2>
-            <p style="color: red;">Top five scorers of the quiz:</p>
+            <strong><p style="color: red;">Top scorers of the quiz:</p></strong>
             <div class="leaderboard-table">
                 <!-- Leaderboard content fetched from database -->
                 <%! int rank = 1; %>
