@@ -1,11 +1,14 @@
 package com.dquiz.models;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +27,9 @@ public class Quiz {
 	private int quizid;
 	private String title;
 	private String description;
+	
+	@OneToMany(mappedBy = "quiz")
+	private List<QuizAttempt> quizattempt;
 	
 	public Quiz() {
 		super();

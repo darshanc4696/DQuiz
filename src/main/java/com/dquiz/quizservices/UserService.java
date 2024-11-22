@@ -41,5 +41,10 @@ public class UserService {
 		return userRepo.findById(id).orElse(new User()).getUsername();
 	}
 
+	public User findById(int userid) {
+		
+		return userRepo.findById(userid).orElse(new User());
+	}
+
 
 }

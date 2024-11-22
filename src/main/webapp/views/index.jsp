@@ -50,7 +50,7 @@
 				if(user != null)
 				{%>	
    				 <button class="startbutton">
-        			<a href="/quizess/login">Start Quiz</a>
+        			<a href="/quizess/startquiz">Start Quiz</a>
     			</button>				
 				<%}
 			%>

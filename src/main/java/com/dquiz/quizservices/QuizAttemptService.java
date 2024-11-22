@@ -25,6 +25,11 @@ public class QuizAttemptService {
 		return quizAttRepo.findByUserId(userid);
 		
 	}
+
+	public void addAttempt(QuizAttempt quizAttempt) {
+		quizAttRepo.save(quizAttempt);
+		
+	}
 	
 	
 

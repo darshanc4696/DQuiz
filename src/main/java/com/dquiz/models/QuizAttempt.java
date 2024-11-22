@@ -1,5 +1,7 @@
 package com.dquiz.models;
 
+import java.time.LocalDate;
+
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.CascadeType;
@@ -37,17 +39,16 @@ public class QuizAttempt {
     private Quiz quiz;
     
 	private int score;
-	private String attemptDate;
+	private LocalDate attemptDate;
 	
 
-	
 	public QuizAttempt() {
 		super();
 	}
 
 
 
-	public QuizAttempt(int attemptid, User user, Quiz quiz, int score, String attemptDate) {
+	public QuizAttempt(int attemptid, User user, Quiz quiz, int score, LocalDate attemptDate) {
 		super();
 		this.attemptid = attemptid;
 		this.user = user;
@@ -58,7 +59,7 @@ public class QuizAttempt {
 
 
 
-	public QuizAttempt(User user, Quiz quiz, int score, String attemptDate) {
+	public QuizAttempt(User user, Quiz quiz, int score, LocalDate attemptDate) {
 		super();
 		this.user = user;
 		this.quiz = quiz;
@@ -73,6 +74,7 @@ public class QuizAttempt {
 		this.user = user;
 		this.quiz = quiz;
 		this.score = score;
+		this.attemptDate = LocalDate.now();
 	}
 
 
@@ -125,13 +127,13 @@ public class QuizAttempt {
 
 
 
-	public String getAttemptDate() {
+	public LocalDate getAttemptDate() {
 		return attemptDate;
 	}
 
 
 
-	public void setAttemptDate(String attemptDate) {
+	public void setAttemptDate(LocalDate attemptDate) {
 		this.attemptDate = attemptDate;
 	}
 

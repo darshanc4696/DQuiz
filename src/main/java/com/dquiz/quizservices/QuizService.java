@@ -17,4 +17,13 @@ public class QuizService {
 		return quizRepo.findById(id).orElse(new Quiz()).getTitle();
 	}
 
+	public Quiz getQuizId(String category) {
+		return quizRepo.findByTitle(category);
+		
+	}
+
+	public Quiz findById(int quizid) {
+		return quizRepo.findById(quizid).orElse(new Quiz());
+	}
+
 }

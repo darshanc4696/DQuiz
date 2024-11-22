@@ -1,11 +1,15 @@
 package com.dquiz.models;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +29,10 @@ public class Question {
 	private int quizid;
 	private String context;
 	private String correctAnswer;
+	
+	
+	@OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+	private List<Options> options;
 	
 	public Question() {
 		super();
@@ -62,6 +70,14 @@ public class Question {
 	public int getQuizid() {
 		return quizid;
 	}
+	
+	public List<Options> getOptions() {
+		return options;
+	}
+
+	public void setOptions(List<Options> options) {
+		this.options = options;
+	}
 
 	public void setQuizid(int quizid) {
 		this.quizid = quizid;
@@ -81,6 +97,12 @@ public class Question {
 
 	public void setCorrectAnswer(String correctAnswer) {
 		this.correctAnswer = correctAnswer;
+	}
+
+	@Override
+	public String toString() {
+		return  questionid + ", " + quizid + ", " + context + ", "
+				+ correctAnswer;
 	}
 	
 }

@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +24,9 @@ public class Options {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int optionid;
-	private int questionid;
+	@ManyToOne()
+	@JoinColumn(name = "questionid")
+	private Question question;
 	private String optionText;
 	private String optionCode;
 	
@@ -30,17 +34,17 @@ public class Options {
 		super();
 	}
 
-	public Options(int optionid, int questionid, String optionText, String optionCode) {
+	public Options(int optionid, Question question, String optionText, String optionCode) {
 		super();
 		this.optionid = optionid;
-		this.questionid = questionid;
+		this.question = question;
 		this.optionText = optionText;
 		this.optionCode = optionCode;
 	}
 
-	public Options(int questionid, String optionText, String optionCode) {
+	public Options(Question question, String optionText, String optionCode) {
 		super();
-		this.questionid = questionid;
+		this.question = question;
 		this.optionText = optionText;
 		this.optionCode = optionCode;
 	}
@@ -59,12 +63,12 @@ public class Options {
 		this.optionid = optionid;
 	}
 
-	public int getQuestionid() {
-		return questionid;
+	public Question getQuestion() {
+		return question;
 	}
 
-	public void setQuestionid(int questionid) {
-		this.questionid = questionid;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
 	public String getOptionText() {
@@ -82,4 +86,7 @@ public class Options {
 	public void setOptionCode(String optionCode) {
 		this.optionCode = optionCode;
 	}
+	
+	
+	
 }
