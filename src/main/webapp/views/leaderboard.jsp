@@ -24,10 +24,10 @@
                  <table border="1">
 				    <thead>
 				        <tr>
-				            <th>Username</th>
-				            <th>Quiz Title</th>
+				            <th>Rank</th>
+				            <th>Name</th>
+				            <th>Category</th>
 				            <th>Score</th>
-				            <th>Attempt Date</th>
 				        </tr>
 				    </thead>
 				    <tbody>

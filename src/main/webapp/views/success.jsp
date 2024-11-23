@@ -3,11 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Quiz Registration</title>
+    <link rel="stylesheet" type="text/css" href="/css/success.css">
 </head>
 <body>
-<h1>registered successfully!</h1>
-<a href="/quizess/home"> Back to Home</a>
+    <div class="container">
+        <h1>Registered Successfully!</h1>
+        <form action="/quizess/login" method="GET">
+            <button type="submit">Back to Login</button>
+        </form>
+    </div>
 </body>
 </html>

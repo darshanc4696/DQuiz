@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "navbar.jsp" %>
+<%@ include file="navbar.jsp" %>
 <%@ page import="com.dquiz.models.Question, java.util.List, com.dquiz.models.Options" %>
 <!DOCTYPE html>
 <html>
@@ -8,29 +8,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Questions</title>
-    <link rel="stylesheet" href="/css/l.css">
+    <link rel="stylesheet" href="/css/questions.css">
 </head>
 <body>
-    <strong>Questions:</strong>
-    <form action="/quizess/submit-quiz" method="Get">
-        <%! int number = 1; %>
-        <% 
-            List<Question> questions = (List<Question>) session.getAttribute("questions");
-            number = 1;
-            for (Question question : questions) { 
-        %>
-            <p><%= number++ %>. <%= question.getContext() %></p>
+    <div class="containers">
+        <h1>Quiz Questions</h1>
+        <form action="/quizess/submit-quiz" method="GET" class="quiz-form">
             <% 
-                String questionName = "question_" + question.getQuestionid(); 
-                for (Options op : question.getOptions()) { 
+                List<Question> questions = (List<Question>) session.getAttribute("questions");
+                int number = 1;
+                for (Question question : questions) { 
             %>
-                <label>
-                    <input type="radio" name="<%= questionName %>" value="<%= op.getOptionCode() %>">
-                    <%= op.getOptionText() %>
-                </label><br>
+            <div class="question">
+                <p class="question-text"><%= number++ %>. <%= question.getContext() %></p>
+                <div class="options">
+                    <% 
+                        String questionName = "question_" + question.getQuestionid(); 
+                        for (Options op : question.getOptions()) { 
+                    %>
+                    <label class="option-label">
+                        <input type="radio" name="<%= questionName %>" value="<%= op.getOptionCode() %>" required>
+                        <%= op.getOptionText() %>
+                    </label>
+                    <% } %>
+                </div>
+            </div>
             <% } %>
-        <% } %>
-        <button type="submit">Submit</button>
-    </form>
+            <button type="submit" class="submit-btn">Submit Quiz</button>
+        </form>
+    </div>
 </body>
 </html>
